@@ -8,6 +8,7 @@ jobs:
   grabDeps:
     runs-on: ubuntu-latest
     steps:
+      - name: Grabbing dependencies
       run: export DEBIAN_FRONTEND=noninteractive
       run: apt-get -qq update
       run: apt-get -qq -y install lsb-release
@@ -33,6 +34,7 @@ jobs:
     needs: grabDeps
     runs-on: ubuntu-latest
     steps:
+      - name: Building Flatpak
       run: add-apt-repository -y ppa:alexlarsson/flatpak
       run: apt-get -qq update
       run: apt-get -qq -y install flatpak flatpak-builder
