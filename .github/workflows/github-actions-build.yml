@@ -9,35 +9,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Grabbing dependencies
-        run: export DEBIAN_FRONTEND=noninteractive
-        run: apt-get -qq update
-        run: apt-get -qq -y install lsb-release
-        run: lsb_release -a
-        run: apt-get -qq -y install clang-6.0
-              g++-8
-              cmake
-              build-essential
-              libc++-dev
-              libogg-dev
-              libvorbis-dev
-              libopenal-dev
-              libboost-all-dev
-              libsdl2-dev
-              libsdl2-image-dev
-              libsdl2-mixer-dev
-              libjsoncpp-dev
-              libpng-dev
-              libglew-dev
-              software-properties-common
-              git
+        run: |
+           export DEBIAN_FRONTEND=noninteractive
+           apt-get -qq update
+           apt-get -qq -y install lsb-release
+           lsb_release -a
+           apt-get -qq -y install clang-6.0 \
+           g++-8 \
+           cmake \
+           build-essential \
+           libc++-dev \
+           libogg-dev \
+           libvorbis-dev \
+           libopenal-dev \
+           libboost-all-dev \
+           libsdl2-dev \
+           libsdl2-image-dev \
+           libsdl2-mixer-dev \
+           libjsoncpp-dev \
+           libpng-dev \
+           libglew-dev \
+           software-properties-common \
+           git
+          
   build:
     needs: grabDeps
     runs-on: ubuntu-latest
     steps:
       - name: Building Flatpak
         run: add-apt-repository -y ppa:alexlarsson/flatpak
-        run: apt-get -qq update
-        run: apt-get -qq -y install flatpak flatpak-builder
-        run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        run: flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
-        run: flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
+        apt-get -qq update
+        apt-get -qq -y install flatpak flatpak-builder
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
+        flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
