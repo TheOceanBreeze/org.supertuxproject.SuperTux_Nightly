@@ -11,10 +11,10 @@ jobs:
       - name: Grabbing dependencies
         run: |
            export DEBIAN_FRONTEND=noninteractive
-           apt-get -qq update
-           apt-get -qq -y install lsb-release
+           sudo apt update
+           sudo apt -y install lsb-release
            lsb_release -a
-           apt-get -qq -y install clang-6.0 \
+           sudo apt isntall -y clang-6.0 \
            g++-8 \
            cmake \
            build-essential \
@@ -38,9 +38,9 @@ jobs:
     steps:
       - name: Building Flatpak
         run: |
-           add-apt-repository -y ppa:alexlarsson/flatpak
-           apt-get -qq update
-           apt-get -qq -y install flatpak flatpak-builder
+           sudo add-apt-repository -y ppa:alexlarsson/flatpak
+           sudo apt-get -qq update
+           sudo apt-get -qq -y install flatpak flatpak-builder
            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
            flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
            flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
