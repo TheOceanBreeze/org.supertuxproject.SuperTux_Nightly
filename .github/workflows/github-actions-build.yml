@@ -38,8 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Building Flatpak
-      - uses: actions/checkout@v3
-      - run: |
+        uses: actions/checkout@v3
+        run: |
            sudo apt update
            sudo apt install -y -qq flatpak flatpak-builder
            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
