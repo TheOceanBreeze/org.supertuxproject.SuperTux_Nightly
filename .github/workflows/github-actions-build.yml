@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Building Flatpak
+      - uses: actions/checkout@v3
         run: |
            sudo apt update
            sudo apt install -y -qq flatpak flatpak-builder
@@ -45,5 +46,5 @@ jobs:
            pwd
            ls
            tree .
-           flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux_Nightly/org.supertuxproject.SuperTux_Nightly.json
+           flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux_Nightly.json
            flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
