@@ -8,11 +8,11 @@ jobs:
   grabDeps:
     runs-on: ubuntu-latest
     steps:
-      runs: export DEBIAN_FRONTEND=noninteractive
-      runs: apt-get -qq update
-      runs: apt-get -qq -y install lsb-release
-      runs: lsb_release -a
-      runs: apt-get -qq -y install clang-6.0
+      run: export DEBIAN_FRONTEND=noninteractive
+      run: apt-get -qq update
+      run: apt-get -qq -y install lsb-release
+      run: lsb_release -a
+      run: apt-get -qq -y install clang-6.0
             g++-8
             cmake
             build-essential
@@ -33,9 +33,9 @@ jobs:
     needs: grabDeps
     runs-on: ubuntu-latest
     steps:
-      runs: add-apt-repository -y ppa:alexlarsson/flatpak
-      runs: apt-get -qq update
-      runs: apt-get -qq -y install flatpak flatpak-builder
-      runs: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-      runs: flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
-      runs: flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
+      run: add-apt-repository -y ppa:alexlarsson/flatpak
+      run: apt-get -qq update
+      run: apt-get -qq -y install flatpak flatpak-builder
+      run: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      run: flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
+      run: flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
