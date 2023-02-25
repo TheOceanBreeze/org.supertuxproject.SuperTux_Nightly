@@ -2,7 +2,7 @@ name: 'Build SuperTux Nightly Flatpak'
 
 on: [push]
  jobs:
-  Grab-Dependencies:
+  grabDeps:
     runs-on: ubuntu-latest
     steps:
       runs: export DEBIAN_FRONTEND=noninteractive
@@ -27,7 +27,7 @@ on: [push]
             software-properties-common
             git
   build:
-    needs: Grab-Dependencies
+    needs: grabDeps
     runs-on: ubuntu-latest
     steps:
       runs: add-apt-repository -y ppa:alexlarsson/flatpak
