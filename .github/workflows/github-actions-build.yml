@@ -14,7 +14,7 @@ jobs:
            sudo apt update
            sudo apt -y install lsb-release
            lsb_release -a
-           sudo apt install -y clang \
+           sudo apt install -y -qq clang \
            gcc \
            g++ \
            cmake \
@@ -40,7 +40,7 @@ jobs:
       - name: Building Flatpak
         run: |
            sudo apt update
-           sudo apt install -y flatpak flatpak-builder
-           flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+           sudo apt install -y -qq flatpak flatpak-builder
+           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
            flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
            flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
