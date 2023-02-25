@@ -1,7 +1,10 @@
 name: 'Build SuperTux Nightly Flatpak'
 
-on: [push]
- jobs:
+on:
+ push
+
+
+jobs:
   grabDeps:
     runs-on: ubuntu-latest
     steps:
