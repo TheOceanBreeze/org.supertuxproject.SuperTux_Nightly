@@ -14,8 +14,9 @@ jobs:
            sudo apt update
            sudo apt -y install lsb-release
            lsb_release -a
-           sudo apt install -y clang-6.0 \
-           g++-8 \
+           sudo apt install -y clang \
+           gcc \
+           g++ \
            cmake \
            build-essential \
            libc++-dev \
