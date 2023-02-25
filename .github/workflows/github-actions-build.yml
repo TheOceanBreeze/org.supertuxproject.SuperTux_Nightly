@@ -42,5 +42,5 @@ jobs:
            sudo apt update
            sudo apt install -y -qq flatpak flatpak-builder
            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-           flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
+           flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux_Nightly.json
            flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
