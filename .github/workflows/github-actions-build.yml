@@ -33,7 +33,7 @@ jobs:
            software-properties-common \
            git
            
-  pre-buiid:
+  pre-build:
    needs: grabDeps
    runs-on: ubuntu-latest
    steps:
