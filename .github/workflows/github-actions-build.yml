@@ -38,9 +38,9 @@ jobs:
     steps:
       - name: Building Flatpak
         run: |
-        add-apt-repository -y ppa:alexlarsson/flatpak
-        apt-get -qq update
-        apt-get -qq -y install flatpak flatpak-builder
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
-        flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
+           add-apt-repository -y ppa:alexlarsson/flatpak
+           apt-get -qq update
+           apt-get -qq -y install flatpak flatpak-builder
+           flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+           flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
+           flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly
