@@ -1,0 +1,38 @@
+name: 'Build SuperTux Nightly Flatpak'
+
+on: [push]
+ jobs:
+  Grab-Dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      runs: export DEBIAN_FRONTEND=noninteractive
+      runs: apt-get -qq update
+      runs: apt-get -qq -y install lsb-release
+      runs: lsb_release -a
+      runs: apt-get -qq -y install clang-6.0
+            g++-8
+            cmake
+            build-essential
+            libc++-dev
+            libogg-dev
+            libvorbis-dev
+            libopenal-dev
+            libboost-all-dev
+            libsdl2-dev
+            libsdl2-image-dev
+            libsdl2-mixer-dev
+            libjsoncpp-dev
+            libpng-dev
+            libglew-dev
+            software-properties-common
+            git
+  build:
+    needs: Grab-Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      runs: add-apt-repository -y ppa:alexlarsson/flatpak
+      runs: apt-get -qq update
+      runs: apt-get -qq -y install flatpak flatpak-builder
+      runs: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      runs: flatpak-builder --repo=supertux-repo/ supertux-build/ org.supertuxproject.SuperTux.json
+      runs: flatpak build-bundle supertux-repo/ supertux-nightly.flatpak org.supertuxproject.SuperTux_Nightly

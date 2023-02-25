@@ -1,12 +1,12 @@
 {
-    "app-id": "org.supertuxproject.SuperTux",
+    "app-id": "org.supertuxproject.SuperTux_Nightly",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "22.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "supertux2",
     "rename-icon": "supertux2",
-    "rename-desktop-file": "supertux2.desktop",
-    "rename-appdata-file": "supertux2.appdata.xml",
+    "rename-desktop-file": "supertux2-nightly.desktop",
+    "rename-appdata-file": "supertux2.appdata-nightly.xml",
     "finish-args":
     [
         "--socket=wayland",
@@ -99,8 +99,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/SuperTux/supertux.git",
-                    "disable-shallow-clone": true,
-                    "commit": "v0.6.3"
+                    "disable-shallow-clone": false,
+                    "commit": "master"
                 },
                 {
                     "type": "patch",
